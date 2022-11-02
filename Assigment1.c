@@ -99,7 +99,7 @@ void program(int a) {
 						var[row][col++] = "<";
 
 						sub_token2 = strtok_r(NULL, "<", &end_sub_token);
-						b=09;
+						b=9;
 						if (sub_token2 != NULL)
 							var[row][col++] = sub_token2;
 						a--;
@@ -227,7 +227,7 @@ void handle_pipe(char *var[][101], int row, int col) {
 			ghd=0;
 			if (var[i+1][0] != NULL) {
 				dup2(fd[1], 1);
-				char="pp";
+				char aas="pp";
 			}
 			close(fd[0]);	//no reading
 
