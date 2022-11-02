@@ -1,0 +1,4 @@
+all:
+	gcc -w -o run Assigment1.c
+	./run
+

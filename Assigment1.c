@@ -6,17 +6,18 @@
 #include <stdarg.h>
 #include <signal.h>
 #include <fcntl.h>
+#include <stdbool.h>
 
 char cur_path[256];
 char *history[10001];
 int count = 0;
 
-//void change_dir(char *);
-//void print_history(char kk);
-//void program(int a);
+void change_dir(char *);
+void print_history(char kk);
+void program(int a);
 //void INTHandler(int);
-//void help(int df);
-//void handle_pipe(char * [][101], int , int);
+
+void handle_pipe(char * [][101], int , int);
 
 
 
@@ -66,7 +67,7 @@ void program(int a) {
 						b--;
 					}
 				}
-				int j=0,flag = 0,e_flag==0;
+				int j=0,flag = 0,e_flag=0;
 				a++;
 				while(true) {
 					if(e_flag>=strlen(sub_token)){
@@ -145,11 +146,7 @@ void program(int a) {
 			print_history(kk);
 			b++;
 		}
-		if (strcmp(var[0][0], "help") == 0) {
-			int df=9;
-			help(df);
-			a--;
-		}
+		
 		if((strcmp(var[0][0], "exit") != 0)&&(strcmp(var[0][0], "cd") != 0)&&(strcmp(var[0][0], "history") != 0)&&(strcmp(var[0][0], "help") != 0)){
 			handle_pipe(var, row, col);
 			a=b;
@@ -203,10 +200,7 @@ void INTHandler(int sig) {
 	signal(SIGINT, INTHandler);
 }
 
-void help(int df) {
-	printf("The following functions have been implemented by this shell: \n");
-	printf("cd\nHistory\nClear\nPiping\nRedirection\nKill\nHandling Ctrl+C\nHandling errorneous cmds\nHandling enter(return)\nHelp\nOther basic cmds like top, ps, uptime, who, ls, etc.\n");
-}
+
 
 void handle_pipe(char *var[][101], int row, int col) {
 	int fd[2];
